@@ -1,0 +1,16 @@
+syntax="proto2";
+
+message MainWindowState {
+    required double XCord = 1;
+    required double YCord = 2;
+    required double ZCord = 3;
+    required double ACord = 4;
+    required double BCord = 5;
+    required double CCord = 6;
+}
+
+
+message Telemetry {
+    required int32 seq = 1;
+    optional MainWindowState state = 2;
+}
