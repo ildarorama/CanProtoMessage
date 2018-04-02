@@ -34,6 +34,15 @@ message DeviceState {
     repeated ChannelState states = 3;
 }
 
+message Code {
+    required string name = 1;
+    required string body = 2;
+}
+
+message PushButton {
+    required string name = 1;
+    required bool state = 2;
+}
 
 enum RequestType {
     TelemtryRequest = 0;
@@ -46,13 +55,17 @@ enum RequestType {
     DeviceStateReponse = 7;
     ChannelSetRequest = 8;
     ChannelSetResponse = 9;
+    PushButtonRequest = 10;
+    CodeListRequest = 11;
+    CodeLoadRequest = 12;
 }
 
 message Telemetry {
-
     required int32 seq = 1;
     required RequestType type = 2;
     optional MainWindowState state = 3;
     optional Config config = 4;
     optional DeviceState devices = 5;
+    optional PushButton pushButton = 6;
+    repeated Code codeList = 7;
 }

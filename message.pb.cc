@@ -30,6 +30,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* DeviceState_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   DeviceState_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Code_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Code_reflection_ = NULL;
+const ::google::protobuf::Descriptor* PushButton_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  PushButton_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Telemetry_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Telemetry_reflection_ = NULL;
@@ -117,13 +123,47 @@ void protobuf_AssignDesc_message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DeviceState));
-  Telemetry_descriptor_ = file->message_type(4);
-  static const int Telemetry_offsets_[5] = {
+  Code_descriptor_ = file->message_type(4);
+  static const int Code_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Code, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Code, body_),
+  };
+  Code_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Code_descriptor_,
+      Code::default_instance_,
+      Code_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Code, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Code, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Code));
+  PushButton_descriptor_ = file->message_type(5);
+  static const int PushButton_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PushButton, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PushButton, state_),
+  };
+  PushButton_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      PushButton_descriptor_,
+      PushButton::default_instance_,
+      PushButton_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PushButton, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PushButton, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(PushButton));
+  Telemetry_descriptor_ = file->message_type(6);
+  static const int Telemetry_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, seq_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, state_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, config_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, devices_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, pushbutton_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Telemetry, codelist_),
   };
   Telemetry_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -159,6 +199,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     DeviceState_descriptor_, &DeviceState::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Code_descriptor_, &Code::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    PushButton_descriptor_, &PushButton::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Telemetry_descriptor_, &Telemetry::default_instance());
 }
 
@@ -173,6 +217,10 @@ void protobuf_ShutdownFile_message_2eproto() {
   delete ChannelState_reflection_;
   delete DeviceState::default_instance_;
   delete DeviceState_reflection_;
+  delete Code::default_instance_;
+  delete Code_reflection_;
+  delete PushButton::default_instance_;
+  delete PushButton_reflection_;
   delete Telemetry::default_instance_;
   delete Telemetry_reflection_;
 }
@@ -193,28 +241,37 @@ void protobuf_AddDesc_message_2eproto() {
     "\030\003 \001(\010\022\023\n\013doubleValue\030\004 \001(\001\022\020\n\010intValue\030"
     "\005 \001(\005\"K\n\013DeviceState\022\014\n\004slot\030\001 \002(\005\022\017\n\007ad"
     "dress\030\002 \002(\005\022\035\n\006states\030\003 \003(\0132\r.ChannelSta"
-    "te\"\215\001\n\tTelemetry\022\013\n\003seq\030\001 \002(\005\022\032\n\004type\030\002 "
-    "\002(\0162\014.RequestType\022\037\n\005state\030\003 \001(\0132\020.MainW"
-    "indowState\022\027\n\006config\030\004 \001(\0132\007.Config\022\035\n\007d"
-    "evices\030\005 \001(\0132\014.DeviceState*0\n\013ChannelTyp"
-    "e\022\010\n\004BOOL\020\000\022\013\n\007INTEGER\020\001\022\n\n\006DOUBLE\020\002*\323\001\n"
-    "\013RequestType\022\023\n\017TelemtryRequest\020\000\022\021\n\rCon"
-    "figRequest\020\001\022\022\n\016ConfigResponse\020\002\022\025\n\021Tele"
-    "metryResponse\020\003\022\010\n\004Ping\020\004\022\010\n\004Pong\020\005\022\026\n\022D"
-    "eviceStateRequest\020\006\022\026\n\022DeviceStateRepons"
-    "e\020\007\022\025\n\021ChannelSetRequest\020\010\022\026\n\022ChannelSet"
-    "Response\020\t", 770);
+    "te\"\"\n\004Code\022\014\n\004name\030\001 \002(\t\022\014\n\004body\030\002 \002(\t\")"
+    "\n\nPushButton\022\014\n\004name\030\001 \002(\t\022\r\n\005state\030\002 \002("
+    "\010\"\307\001\n\tTelemetry\022\013\n\003seq\030\001 \002(\005\022\032\n\004type\030\002 \002"
+    "(\0162\014.RequestType\022\037\n\005state\030\003 \001(\0132\020.MainWi"
+    "ndowState\022\027\n\006config\030\004 \001(\0132\007.Config\022\035\n\007de"
+    "vices\030\005 \001(\0132\014.DeviceState\022\037\n\npushButton\030"
+    "\006 \001(\0132\013.PushButton\022\027\n\010codeList\030\007 \003(\0132\005.C"
+    "ode*0\n\013ChannelType\022\010\n\004BOOL\020\000\022\013\n\007INTEGER\020"
+    "\001\022\n\n\006DOUBLE\020\002*\224\002\n\013RequestType\022\023\n\017Telemtr"
+    "yRequest\020\000\022\021\n\rConfigRequest\020\001\022\022\n\016ConfigR"
+    "esponse\020\002\022\025\n\021TelemetryResponse\020\003\022\010\n\004Ping"
+    "\020\004\022\010\n\004Pong\020\005\022\026\n\022DeviceStateRequest\020\006\022\026\n\022"
+    "DeviceStateReponse\020\007\022\025\n\021ChannelSetReques"
+    "t\020\010\022\026\n\022ChannelSetResponse\020\t\022\025\n\021PushButto"
+    "nRequest\020\n\022\023\n\017CodeListRequest\020\013\022\023\n\017CodeL"
+    "oadRequest\020\014", 972);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "message.proto", &protobuf_RegisterTypes);
   MainWindowState::default_instance_ = new MainWindowState();
   Config::default_instance_ = new Config();
   ChannelState::default_instance_ = new ChannelState();
   DeviceState::default_instance_ = new DeviceState();
+  Code::default_instance_ = new Code();
+  PushButton::default_instance_ = new PushButton();
   Telemetry::default_instance_ = new Telemetry();
   MainWindowState::default_instance_->InitAsDefaultInstance();
   Config::default_instance_->InitAsDefaultInstance();
   ChannelState::default_instance_->InitAsDefaultInstance();
   DeviceState::default_instance_->InitAsDefaultInstance();
+  Code::default_instance_->InitAsDefaultInstance();
+  PushButton::default_instance_->InitAsDefaultInstance();
   Telemetry::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_message_2eproto);
 }
@@ -256,6 +313,9 @@ bool RequestType_IsValid(int value) {
     case 7:
     case 8:
     case 9:
+    case 10:
+    case 11:
+    case 12:
       return true;
     default:
       return false;
@@ -1676,11 +1736,601 @@ void DeviceState::Swap(DeviceState* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int Code::kNameFieldNumber;
+const int Code::kBodyFieldNumber;
+#endif  // !_MSC_VER
+
+Code::Code()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Code)
+}
+
+void Code::InitAsDefaultInstance() {
+}
+
+Code::Code(const Code& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:Code)
+}
+
+void Code::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  body_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Code::~Code() {
+  // @@protoc_insertion_point(destructor:Code)
+  SharedDtor();
+}
+
+void Code::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (body_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete body_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void Code::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Code::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Code_descriptor_;
+}
+
+const Code& Code::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
+  return *default_instance_;
+}
+
+Code* Code::default_instance_ = NULL;
+
+Code* Code::New() const {
+  return new Code;
+}
+
+void Code::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        name_->clear();
+      }
+    }
+    if (has_body()) {
+      if (body_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        body_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Code::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Code)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "name");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_body;
+        break;
+      }
+
+      // required string body = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_body:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_body()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->body().data(), this->body().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "body");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Code)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Code)
+  return false;
+#undef DO_
+}
+
+void Code::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Code)
+  // required string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // required string body = 2;
+  if (has_body()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->body().data(), this->body().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "body");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->body(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Code)
+}
+
+::google::protobuf::uint8* Code::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Code)
+  // required string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // required string body = 2;
+  if (has_body()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->body().data(), this->body().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "body");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->body(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Code)
+  return target;
+}
+
+int Code::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+    // required string body = 2;
+    if (has_body()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->body());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Code::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Code* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Code*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Code::MergeFrom(const Code& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+    if (from.has_body()) {
+      set_body(from.body());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Code::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Code::CopyFrom(const Code& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Code::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void Code::Swap(Code* other) {
+  if (other != this) {
+    std::swap(name_, other->name_);
+    std::swap(body_, other->body_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Code::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Code_descriptor_;
+  metadata.reflection = Code_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int PushButton::kNameFieldNumber;
+const int PushButton::kStateFieldNumber;
+#endif  // !_MSC_VER
+
+PushButton::PushButton()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PushButton)
+}
+
+void PushButton::InitAsDefaultInstance() {
+}
+
+PushButton::PushButton(const PushButton& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:PushButton)
+}
+
+void PushButton::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  state_ = false;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+PushButton::~PushButton() {
+  // @@protoc_insertion_point(destructor:PushButton)
+  SharedDtor();
+}
+
+void PushButton::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void PushButton::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* PushButton::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return PushButton_descriptor_;
+}
+
+const PushButton& PushButton::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
+  return *default_instance_;
+}
+
+PushButton* PushButton::default_instance_ = NULL;
+
+PushButton* PushButton::New() const {
+  return new PushButton;
+}
+
+void PushButton::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        name_->clear();
+      }
+    }
+    state_ = false;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool PushButton::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:PushButton)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string name = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "name");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_state;
+        break;
+      }
+
+      // required bool state = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_state:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &state_)));
+          set_has_state();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:PushButton)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:PushButton)
+  return false;
+#undef DO_
+}
+
+void PushButton::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:PushButton)
+  // required string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // required bool state = 2;
+  if (has_state()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->state(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:PushButton)
+}
+
+::google::protobuf::uint8* PushButton::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PushButton)
+  // required string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // required bool state = 2;
+  if (has_state()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->state(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PushButton)
+  return target;
+}
+
+int PushButton::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+    // required bool state = 2;
+    if (has_state()) {
+      total_size += 1 + 1;
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void PushButton::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const PushButton* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PushButton*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void PushButton::MergeFrom(const PushButton& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+    if (from.has_state()) {
+      set_state(from.state());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void PushButton::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PushButton::CopyFrom(const PushButton& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PushButton::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void PushButton::Swap(PushButton* other) {
+  if (other != this) {
+    std::swap(name_, other->name_);
+    std::swap(state_, other->state_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata PushButton::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = PushButton_descriptor_;
+  metadata.reflection = PushButton_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int Telemetry::kSeqFieldNumber;
 const int Telemetry::kTypeFieldNumber;
 const int Telemetry::kStateFieldNumber;
 const int Telemetry::kConfigFieldNumber;
 const int Telemetry::kDevicesFieldNumber;
+const int Telemetry::kPushButtonFieldNumber;
+const int Telemetry::kCodeListFieldNumber;
 #endif  // !_MSC_VER
 
 Telemetry::Telemetry()
@@ -1693,6 +2343,7 @@ void Telemetry::InitAsDefaultInstance() {
   state_ = const_cast< ::MainWindowState*>(&::MainWindowState::default_instance());
   config_ = const_cast< ::Config*>(&::Config::default_instance());
   devices_ = const_cast< ::DeviceState*>(&::DeviceState::default_instance());
+  pushbutton_ = const_cast< ::PushButton*>(&::PushButton::default_instance());
 }
 
 Telemetry::Telemetry(const Telemetry& from)
@@ -1709,6 +2360,7 @@ void Telemetry::SharedCtor() {
   state_ = NULL;
   config_ = NULL;
   devices_ = NULL;
+  pushbutton_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1722,6 +2374,7 @@ void Telemetry::SharedDtor() {
     delete state_;
     delete config_;
     delete devices_;
+    delete pushbutton_;
   }
 }
 
@@ -1757,7 +2410,7 @@ void Telemetry::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 31) {
+  if (_has_bits_[0 / 32] & 63) {
     ZR_(seq_, type_);
     if (has_state()) {
       if (state_ != NULL) state_->::MainWindowState::Clear();
@@ -1768,11 +2421,15 @@ void Telemetry::Clear() {
     if (has_devices()) {
       if (devices_ != NULL) devices_->::DeviceState::Clear();
     }
+    if (has_pushbutton()) {
+      if (pushbutton_ != NULL) pushbutton_->::PushButton::Clear();
+    }
   }
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
 
+  codelist_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1856,6 +2513,33 @@ bool Telemetry::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(50)) goto parse_pushButton;
+        break;
+      }
+
+      // optional .PushButton pushButton = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_pushButton:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_pushbutton()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_codeList;
+        break;
+      }
+
+      // repeated .Code codeList = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_codeList:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_codelist()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_codeList;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1914,6 +2598,18 @@ void Telemetry::SerializeWithCachedSizes(
       5, this->devices(), output);
   }
 
+  // optional .PushButton pushButton = 6;
+  if (has_pushbutton()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->pushbutton(), output);
+  }
+
+  // repeated .Code codeList = 7;
+  for (int i = 0; i < this->codelist_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->codelist(i), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1954,6 +2650,20 @@ void Telemetry::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         5, this->devices(), target);
+  }
+
+  // optional .PushButton pushButton = 6;
+  if (has_pushbutton()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->pushbutton(), target);
+  }
+
+  // repeated .Code codeList = 7;
+  for (int i = 0; i < this->codelist_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->codelist(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2002,7 +2712,22 @@ int Telemetry::ByteSize() const {
           this->devices());
     }
 
+    // optional .PushButton pushButton = 6;
+    if (has_pushbutton()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->pushbutton());
+    }
+
   }
+  // repeated .Code codeList = 7;
+  total_size += 1 * this->codelist_size();
+  for (int i = 0; i < this->codelist_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->codelist(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -2028,6 +2753,7 @@ void Telemetry::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Telemetry::MergeFrom(const Telemetry& from) {
   GOOGLE_CHECK_NE(&from, this);
+  codelist_.MergeFrom(from.codelist_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_seq()) {
       set_seq(from.seq());
@@ -2043,6 +2769,9 @@ void Telemetry::MergeFrom(const Telemetry& from) {
     }
     if (from.has_devices()) {
       mutable_devices()->::DeviceState::MergeFrom(from.devices());
+    }
+    if (from.has_pushbutton()) {
+      mutable_pushbutton()->::PushButton::MergeFrom(from.pushbutton());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2072,6 +2801,10 @@ bool Telemetry::IsInitialized() const {
   if (has_devices()) {
     if (!this->devices().IsInitialized()) return false;
   }
+  if (has_pushbutton()) {
+    if (!this->pushbutton().IsInitialized()) return false;
+  }
+  if (!::google::protobuf::internal::AllAreInitialized(this->codelist())) return false;
   return true;
 }
 
@@ -2082,6 +2815,8 @@ void Telemetry::Swap(Telemetry* other) {
     std::swap(state_, other->state_);
     std::swap(config_, other->config_);
     std::swap(devices_, other->devices_);
+    std::swap(pushbutton_, other->pushbutton_);
+    codelist_.Swap(&other->codelist_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

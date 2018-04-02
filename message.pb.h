@@ -36,6 +36,8 @@ class MainWindowState;
 class Config;
 class ChannelState;
 class DeviceState;
+class Code;
+class PushButton;
 class Telemetry;
 
 enum ChannelType {
@@ -68,11 +70,14 @@ enum RequestType {
   DeviceStateRequest = 6,
   DeviceStateReponse = 7,
   ChannelSetRequest = 8,
-  ChannelSetResponse = 9
+  ChannelSetResponse = 9,
+  PushButtonRequest = 10,
+  CodeListRequest = 11,
+  CodeLoadRequest = 12
 };
 bool RequestType_IsValid(int value);
 const RequestType RequestType_MIN = TelemtryRequest;
-const RequestType RequestType_MAX = ChannelSetResponse;
+const RequestType RequestType_MAX = CodeLoadRequest;
 const int RequestType_ARRAYSIZE = RequestType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* RequestType_descriptor();
@@ -531,6 +536,199 @@ class DeviceState : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Code : public ::google::protobuf::Message {
+ public:
+  Code();
+  virtual ~Code();
+
+  Code(const Code& from);
+
+  inline Code& operator=(const Code& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Code& default_instance();
+
+  void Swap(Code* other);
+
+  // implements Message ----------------------------------------------
+
+  Code* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Code& from);
+  void MergeFrom(const Code& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // required string body = 2;
+  inline bool has_body() const;
+  inline void clear_body();
+  static const int kBodyFieldNumber = 2;
+  inline const ::std::string& body() const;
+  inline void set_body(const ::std::string& value);
+  inline void set_body(const char* value);
+  inline void set_body(const char* value, size_t size);
+  inline ::std::string* mutable_body();
+  inline ::std::string* release_body();
+  inline void set_allocated_body(::std::string* body);
+
+  // @@protoc_insertion_point(class_scope:Code)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+  inline void set_has_body();
+  inline void clear_has_body();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* name_;
+  ::std::string* body_;
+  friend void  protobuf_AddDesc_message_2eproto();
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static Code* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PushButton : public ::google::protobuf::Message {
+ public:
+  PushButton();
+  virtual ~PushButton();
+
+  PushButton(const PushButton& from);
+
+  inline PushButton& operator=(const PushButton& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PushButton& default_instance();
+
+  void Swap(PushButton* other);
+
+  // implements Message ----------------------------------------------
+
+  PushButton* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PushButton& from);
+  void MergeFrom(const PushButton& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // required bool state = 2;
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 2;
+  inline bool state() const;
+  inline void set_state(bool value);
+
+  // @@protoc_insertion_point(class_scope:PushButton)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+  inline void set_has_state();
+  inline void clear_has_state();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* name_;
+  bool state_;
+  friend void  protobuf_AddDesc_message_2eproto();
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static PushButton* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Telemetry : public ::google::protobuf::Message {
  public:
   Telemetry();
@@ -625,6 +823,27 @@ class Telemetry : public ::google::protobuf::Message {
   inline ::DeviceState* release_devices();
   inline void set_allocated_devices(::DeviceState* devices);
 
+  // optional .PushButton pushButton = 6;
+  inline bool has_pushbutton() const;
+  inline void clear_pushbutton();
+  static const int kPushButtonFieldNumber = 6;
+  inline const ::PushButton& pushbutton() const;
+  inline ::PushButton* mutable_pushbutton();
+  inline ::PushButton* release_pushbutton();
+  inline void set_allocated_pushbutton(::PushButton* pushbutton);
+
+  // repeated .Code codeList = 7;
+  inline int codelist_size() const;
+  inline void clear_codelist();
+  static const int kCodeListFieldNumber = 7;
+  inline const ::Code& codelist(int index) const;
+  inline ::Code* mutable_codelist(int index);
+  inline ::Code* add_codelist();
+  inline const ::google::protobuf::RepeatedPtrField< ::Code >&
+      codelist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Code >*
+      mutable_codelist();
+
   // @@protoc_insertion_point(class_scope:Telemetry)
  private:
   inline void set_has_seq();
@@ -637,6 +856,8 @@ class Telemetry : public ::google::protobuf::Message {
   inline void clear_has_config();
   inline void set_has_devices();
   inline void clear_has_devices();
+  inline void set_has_pushbutton();
+  inline void clear_has_pushbutton();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -647,6 +868,8 @@ class Telemetry : public ::google::protobuf::Message {
   ::MainWindowState* state_;
   ::Config* config_;
   ::DeviceState* devices_;
+  ::PushButton* pushbutton_;
+  ::google::protobuf::RepeatedPtrField< ::Code > codelist_;
   friend void  protobuf_AddDesc_message_2eproto();
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
@@ -1118,6 +1341,266 @@ DeviceState::mutable_states() {
 
 // -------------------------------------------------------------------
 
+// Code
+
+// required string name = 1;
+inline bool Code::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Code::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Code::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Code::clear_name() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& Code::name() const {
+  // @@protoc_insertion_point(field_get:Code.name)
+  return *name_;
+}
+inline void Code::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set:Code.name)
+}
+inline void Code::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set_char:Code.name)
+}
+inline void Code::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:Code.name)
+}
+inline ::std::string* Code::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:Code.name)
+  return name_;
+}
+inline ::std::string* Code::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void Code::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Code.name)
+}
+
+// required string body = 2;
+inline bool Code::has_body() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Code::set_has_body() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Code::clear_has_body() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Code::clear_body() {
+  if (body_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    body_->clear();
+  }
+  clear_has_body();
+}
+inline const ::std::string& Code::body() const {
+  // @@protoc_insertion_point(field_get:Code.body)
+  return *body_;
+}
+inline void Code::set_body(const ::std::string& value) {
+  set_has_body();
+  if (body_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    body_ = new ::std::string;
+  }
+  body_->assign(value);
+  // @@protoc_insertion_point(field_set:Code.body)
+}
+inline void Code::set_body(const char* value) {
+  set_has_body();
+  if (body_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    body_ = new ::std::string;
+  }
+  body_->assign(value);
+  // @@protoc_insertion_point(field_set_char:Code.body)
+}
+inline void Code::set_body(const char* value, size_t size) {
+  set_has_body();
+  if (body_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    body_ = new ::std::string;
+  }
+  body_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:Code.body)
+}
+inline ::std::string* Code::mutable_body() {
+  set_has_body();
+  if (body_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    body_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:Code.body)
+  return body_;
+}
+inline ::std::string* Code::release_body() {
+  clear_has_body();
+  if (body_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = body_;
+    body_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void Code::set_allocated_body(::std::string* body) {
+  if (body_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete body_;
+  }
+  if (body) {
+    set_has_body();
+    body_ = body;
+  } else {
+    clear_has_body();
+    body_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Code.body)
+}
+
+// -------------------------------------------------------------------
+
+// PushButton
+
+// required string name = 1;
+inline bool PushButton::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PushButton::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PushButton::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PushButton::clear_name() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& PushButton::name() const {
+  // @@protoc_insertion_point(field_get:PushButton.name)
+  return *name_;
+}
+inline void PushButton::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set:PushButton.name)
+}
+inline void PushButton::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set_char:PushButton.name)
+}
+inline void PushButton::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:PushButton.name)
+}
+inline ::std::string* PushButton::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:PushButton.name)
+  return name_;
+}
+inline ::std::string* PushButton::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void PushButton::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:PushButton.name)
+}
+
+// required bool state = 2;
+inline bool PushButton::has_state() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PushButton::set_has_state() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PushButton::clear_has_state() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PushButton::clear_state() {
+  state_ = false;
+  clear_has_state();
+}
+inline bool PushButton::state() const {
+  // @@protoc_insertion_point(field_get:PushButton.state)
+  return state_;
+}
+inline void PushButton::set_state(bool value) {
+  set_has_state();
+  state_ = value;
+  // @@protoc_insertion_point(field_set:PushButton.state)
+}
+
+// -------------------------------------------------------------------
+
 // Telemetry
 
 // required int32 seq = 1;
@@ -1290,6 +1773,77 @@ inline void Telemetry::set_allocated_devices(::DeviceState* devices) {
     clear_has_devices();
   }
   // @@protoc_insertion_point(field_set_allocated:Telemetry.devices)
+}
+
+// optional .PushButton pushButton = 6;
+inline bool Telemetry::has_pushbutton() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void Telemetry::set_has_pushbutton() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void Telemetry::clear_has_pushbutton() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void Telemetry::clear_pushbutton() {
+  if (pushbutton_ != NULL) pushbutton_->::PushButton::Clear();
+  clear_has_pushbutton();
+}
+inline const ::PushButton& Telemetry::pushbutton() const {
+  // @@protoc_insertion_point(field_get:Telemetry.pushButton)
+  return pushbutton_ != NULL ? *pushbutton_ : *default_instance_->pushbutton_;
+}
+inline ::PushButton* Telemetry::mutable_pushbutton() {
+  set_has_pushbutton();
+  if (pushbutton_ == NULL) pushbutton_ = new ::PushButton;
+  // @@protoc_insertion_point(field_mutable:Telemetry.pushButton)
+  return pushbutton_;
+}
+inline ::PushButton* Telemetry::release_pushbutton() {
+  clear_has_pushbutton();
+  ::PushButton* temp = pushbutton_;
+  pushbutton_ = NULL;
+  return temp;
+}
+inline void Telemetry::set_allocated_pushbutton(::PushButton* pushbutton) {
+  delete pushbutton_;
+  pushbutton_ = pushbutton;
+  if (pushbutton) {
+    set_has_pushbutton();
+  } else {
+    clear_has_pushbutton();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Telemetry.pushButton)
+}
+
+// repeated .Code codeList = 7;
+inline int Telemetry::codelist_size() const {
+  return codelist_.size();
+}
+inline void Telemetry::clear_codelist() {
+  codelist_.Clear();
+}
+inline const ::Code& Telemetry::codelist(int index) const {
+  // @@protoc_insertion_point(field_get:Telemetry.codeList)
+  return codelist_.Get(index);
+}
+inline ::Code* Telemetry::mutable_codelist(int index) {
+  // @@protoc_insertion_point(field_mutable:Telemetry.codeList)
+  return codelist_.Mutable(index);
+}
+inline ::Code* Telemetry::add_codelist() {
+  // @@protoc_insertion_point(field_add:Telemetry.codeList)
+  return codelist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Code >&
+Telemetry::codelist() const {
+  // @@protoc_insertion_point(field_list:Telemetry.codeList)
+  return codelist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Code >*
+Telemetry::mutable_codelist() {
+  // @@protoc_insertion_point(field_mutable_list:Telemetry.codeList)
+  return &codelist_;
 }
 
 
