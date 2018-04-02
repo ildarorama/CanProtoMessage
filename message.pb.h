@@ -23,6 +23,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -32,8 +33,58 @@ void protobuf_AssignDesc_message_2eproto();
 void protobuf_ShutdownFile_message_2eproto();
 
 class MainWindowState;
+class Config;
+class ChannelState;
+class DeviceState;
 class Telemetry;
 
+enum ChannelType {
+  BOOL = 0,
+  INTEGER = 1,
+  DOUBLE = 2
+};
+bool ChannelType_IsValid(int value);
+const ChannelType ChannelType_MIN = BOOL;
+const ChannelType ChannelType_MAX = DOUBLE;
+const int ChannelType_ARRAYSIZE = ChannelType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ChannelType_descriptor();
+inline const ::std::string& ChannelType_Name(ChannelType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ChannelType_descriptor(), value);
+}
+inline bool ChannelType_Parse(
+    const ::std::string& name, ChannelType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ChannelType>(
+    ChannelType_descriptor(), name, value);
+}
+enum RequestType {
+  TelemtryRequest = 0,
+  ConfigRequest = 1,
+  ConfigResponse = 2,
+  TelemetryResponse = 3,
+  Ping = 4,
+  Pong = 5,
+  DeviceStateRequest = 6,
+  DeviceStateReponse = 7,
+  ChannelSetRequest = 8,
+  ChannelSetResponse = 9
+};
+bool RequestType_IsValid(int value);
+const RequestType RequestType_MIN = TelemtryRequest;
+const RequestType RequestType_MAX = ChannelSetResponse;
+const int RequestType_ARRAYSIZE = RequestType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* RequestType_descriptor();
+inline const ::std::string& RequestType_Name(RequestType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    RequestType_descriptor(), value);
+}
+inline bool RequestType_Parse(
+    const ::std::string& name, RequestType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<RequestType>(
+    RequestType_descriptor(), name, value);
+}
 // ===================================================================
 
 class MainWindowState : public ::google::protobuf::Message {
@@ -165,6 +216,321 @@ class MainWindowState : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Config : public ::google::protobuf::Message {
+ public:
+  Config();
+  virtual ~Config();
+
+  Config(const Config& from);
+
+  inline Config& operator=(const Config& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Config& default_instance();
+
+  void Swap(Config* other);
+
+  // implements Message ----------------------------------------------
+
+  Config* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Config& from);
+  void MergeFrom(const Config& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 version = 1;
+  inline bool has_version() const;
+  inline void clear_version();
+  static const int kVersionFieldNumber = 1;
+  inline ::google::protobuf::int32 version() const;
+  inline void set_version(::google::protobuf::int32 value);
+
+  // required string config = 2;
+  inline bool has_config() const;
+  inline void clear_config();
+  static const int kConfigFieldNumber = 2;
+  inline const ::std::string& config() const;
+  inline void set_config(const ::std::string& value);
+  inline void set_config(const char* value);
+  inline void set_config(const char* value, size_t size);
+  inline ::std::string* mutable_config();
+  inline ::std::string* release_config();
+  inline void set_allocated_config(::std::string* config);
+
+  // @@protoc_insertion_point(class_scope:Config)
+ private:
+  inline void set_has_version();
+  inline void clear_has_version();
+  inline void set_has_config();
+  inline void clear_has_config();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* config_;
+  ::google::protobuf::int32 version_;
+  friend void  protobuf_AddDesc_message_2eproto();
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static Config* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ChannelState : public ::google::protobuf::Message {
+ public:
+  ChannelState();
+  virtual ~ChannelState();
+
+  ChannelState(const ChannelState& from);
+
+  inline ChannelState& operator=(const ChannelState& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ChannelState& default_instance();
+
+  void Swap(ChannelState* other);
+
+  // implements Message ----------------------------------------------
+
+  ChannelState* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ChannelState& from);
+  void MergeFrom(const ChannelState& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 number = 1;
+  inline bool has_number() const;
+  inline void clear_number();
+  static const int kNumberFieldNumber = 1;
+  inline ::google::protobuf::int32 number() const;
+  inline void set_number(::google::protobuf::int32 value);
+
+  // required .ChannelType type = 2;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 2;
+  inline ::ChannelType type() const;
+  inline void set_type(::ChannelType value);
+
+  // optional bool boolValue = 3;
+  inline bool has_boolvalue() const;
+  inline void clear_boolvalue();
+  static const int kBoolValueFieldNumber = 3;
+  inline bool boolvalue() const;
+  inline void set_boolvalue(bool value);
+
+  // optional double doubleValue = 4;
+  inline bool has_doublevalue() const;
+  inline void clear_doublevalue();
+  static const int kDoubleValueFieldNumber = 4;
+  inline double doublevalue() const;
+  inline void set_doublevalue(double value);
+
+  // optional int32 intValue = 5;
+  inline bool has_intvalue() const;
+  inline void clear_intvalue();
+  static const int kIntValueFieldNumber = 5;
+  inline ::google::protobuf::int32 intvalue() const;
+  inline void set_intvalue(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ChannelState)
+ private:
+  inline void set_has_number();
+  inline void clear_has_number();
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_boolvalue();
+  inline void clear_has_boolvalue();
+  inline void set_has_doublevalue();
+  inline void clear_has_doublevalue();
+  inline void set_has_intvalue();
+  inline void clear_has_intvalue();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 number_;
+  int type_;
+  double doublevalue_;
+  bool boolvalue_;
+  ::google::protobuf::int32 intvalue_;
+  friend void  protobuf_AddDesc_message_2eproto();
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static ChannelState* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DeviceState : public ::google::protobuf::Message {
+ public:
+  DeviceState();
+  virtual ~DeviceState();
+
+  DeviceState(const DeviceState& from);
+
+  inline DeviceState& operator=(const DeviceState& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DeviceState& default_instance();
+
+  void Swap(DeviceState* other);
+
+  // implements Message ----------------------------------------------
+
+  DeviceState* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DeviceState& from);
+  void MergeFrom(const DeviceState& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 slot = 1;
+  inline bool has_slot() const;
+  inline void clear_slot();
+  static const int kSlotFieldNumber = 1;
+  inline ::google::protobuf::int32 slot() const;
+  inline void set_slot(::google::protobuf::int32 value);
+
+  // required int32 address = 2;
+  inline bool has_address() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 2;
+  inline ::google::protobuf::int32 address() const;
+  inline void set_address(::google::protobuf::int32 value);
+
+  // repeated .ChannelState states = 3;
+  inline int states_size() const;
+  inline void clear_states();
+  static const int kStatesFieldNumber = 3;
+  inline const ::ChannelState& states(int index) const;
+  inline ::ChannelState* mutable_states(int index);
+  inline ::ChannelState* add_states();
+  inline const ::google::protobuf::RepeatedPtrField< ::ChannelState >&
+      states() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ChannelState >*
+      mutable_states();
+
+  // @@protoc_insertion_point(class_scope:DeviceState)
+ private:
+  inline void set_has_slot();
+  inline void clear_has_slot();
+  inline void set_has_address();
+  inline void clear_has_address();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 slot_;
+  ::google::protobuf::int32 address_;
+  ::google::protobuf::RepeatedPtrField< ::ChannelState > states_;
+  friend void  protobuf_AddDesc_message_2eproto();
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static DeviceState* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Telemetry : public ::google::protobuf::Message {
  public:
   Telemetry();
@@ -225,28 +591,62 @@ class Telemetry : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 seq() const;
   inline void set_seq(::google::protobuf::int32 value);
 
-  // optional .MainWindowState state = 2;
+  // required .RequestType type = 2;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 2;
+  inline ::RequestType type() const;
+  inline void set_type(::RequestType value);
+
+  // optional .MainWindowState state = 3;
   inline bool has_state() const;
   inline void clear_state();
-  static const int kStateFieldNumber = 2;
+  static const int kStateFieldNumber = 3;
   inline const ::MainWindowState& state() const;
   inline ::MainWindowState* mutable_state();
   inline ::MainWindowState* release_state();
   inline void set_allocated_state(::MainWindowState* state);
 
+  // optional .Config config = 4;
+  inline bool has_config() const;
+  inline void clear_config();
+  static const int kConfigFieldNumber = 4;
+  inline const ::Config& config() const;
+  inline ::Config* mutable_config();
+  inline ::Config* release_config();
+  inline void set_allocated_config(::Config* config);
+
+  // optional .DeviceState devices = 5;
+  inline bool has_devices() const;
+  inline void clear_devices();
+  static const int kDevicesFieldNumber = 5;
+  inline const ::DeviceState& devices() const;
+  inline ::DeviceState* mutable_devices();
+  inline ::DeviceState* release_devices();
+  inline void set_allocated_devices(::DeviceState* devices);
+
   // @@protoc_insertion_point(class_scope:Telemetry)
  private:
   inline void set_has_seq();
   inline void clear_has_seq();
+  inline void set_has_type();
+  inline void clear_has_type();
   inline void set_has_state();
   inline void clear_has_state();
+  inline void set_has_config();
+  inline void clear_has_config();
+  inline void set_has_devices();
+  inline void clear_has_devices();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::MainWindowState* state_;
   ::google::protobuf::int32 seq_;
+  int type_;
+  ::MainWindowState* state_;
+  ::Config* config_;
+  ::DeviceState* devices_;
   friend void  protobuf_AddDesc_message_2eproto();
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
@@ -407,6 +807,317 @@ inline void MainWindowState::set_ccord(double value) {
 
 // -------------------------------------------------------------------
 
+// Config
+
+// required int32 version = 1;
+inline bool Config::has_version() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Config::set_has_version() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Config::clear_has_version() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Config::clear_version() {
+  version_ = 0;
+  clear_has_version();
+}
+inline ::google::protobuf::int32 Config::version() const {
+  // @@protoc_insertion_point(field_get:Config.version)
+  return version_;
+}
+inline void Config::set_version(::google::protobuf::int32 value) {
+  set_has_version();
+  version_ = value;
+  // @@protoc_insertion_point(field_set:Config.version)
+}
+
+// required string config = 2;
+inline bool Config::has_config() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Config::set_has_config() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Config::clear_has_config() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Config::clear_config() {
+  if (config_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    config_->clear();
+  }
+  clear_has_config();
+}
+inline const ::std::string& Config::config() const {
+  // @@protoc_insertion_point(field_get:Config.config)
+  return *config_;
+}
+inline void Config::set_config(const ::std::string& value) {
+  set_has_config();
+  if (config_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    config_ = new ::std::string;
+  }
+  config_->assign(value);
+  // @@protoc_insertion_point(field_set:Config.config)
+}
+inline void Config::set_config(const char* value) {
+  set_has_config();
+  if (config_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    config_ = new ::std::string;
+  }
+  config_->assign(value);
+  // @@protoc_insertion_point(field_set_char:Config.config)
+}
+inline void Config::set_config(const char* value, size_t size) {
+  set_has_config();
+  if (config_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    config_ = new ::std::string;
+  }
+  config_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:Config.config)
+}
+inline ::std::string* Config::mutable_config() {
+  set_has_config();
+  if (config_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    config_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:Config.config)
+  return config_;
+}
+inline ::std::string* Config::release_config() {
+  clear_has_config();
+  if (config_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = config_;
+    config_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void Config::set_allocated_config(::std::string* config) {
+  if (config_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete config_;
+  }
+  if (config) {
+    set_has_config();
+    config_ = config;
+  } else {
+    clear_has_config();
+    config_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Config.config)
+}
+
+// -------------------------------------------------------------------
+
+// ChannelState
+
+// required int32 number = 1;
+inline bool ChannelState::has_number() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ChannelState::set_has_number() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ChannelState::clear_has_number() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ChannelState::clear_number() {
+  number_ = 0;
+  clear_has_number();
+}
+inline ::google::protobuf::int32 ChannelState::number() const {
+  // @@protoc_insertion_point(field_get:ChannelState.number)
+  return number_;
+}
+inline void ChannelState::set_number(::google::protobuf::int32 value) {
+  set_has_number();
+  number_ = value;
+  // @@protoc_insertion_point(field_set:ChannelState.number)
+}
+
+// required .ChannelType type = 2;
+inline bool ChannelState::has_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ChannelState::set_has_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ChannelState::clear_has_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ChannelState::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::ChannelType ChannelState::type() const {
+  // @@protoc_insertion_point(field_get:ChannelState.type)
+  return static_cast< ::ChannelType >(type_);
+}
+inline void ChannelState::set_type(::ChannelType value) {
+  assert(::ChannelType_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:ChannelState.type)
+}
+
+// optional bool boolValue = 3;
+inline bool ChannelState::has_boolvalue() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ChannelState::set_has_boolvalue() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ChannelState::clear_has_boolvalue() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ChannelState::clear_boolvalue() {
+  boolvalue_ = false;
+  clear_has_boolvalue();
+}
+inline bool ChannelState::boolvalue() const {
+  // @@protoc_insertion_point(field_get:ChannelState.boolValue)
+  return boolvalue_;
+}
+inline void ChannelState::set_boolvalue(bool value) {
+  set_has_boolvalue();
+  boolvalue_ = value;
+  // @@protoc_insertion_point(field_set:ChannelState.boolValue)
+}
+
+// optional double doubleValue = 4;
+inline bool ChannelState::has_doublevalue() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ChannelState::set_has_doublevalue() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ChannelState::clear_has_doublevalue() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ChannelState::clear_doublevalue() {
+  doublevalue_ = 0;
+  clear_has_doublevalue();
+}
+inline double ChannelState::doublevalue() const {
+  // @@protoc_insertion_point(field_get:ChannelState.doubleValue)
+  return doublevalue_;
+}
+inline void ChannelState::set_doublevalue(double value) {
+  set_has_doublevalue();
+  doublevalue_ = value;
+  // @@protoc_insertion_point(field_set:ChannelState.doubleValue)
+}
+
+// optional int32 intValue = 5;
+inline bool ChannelState::has_intvalue() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ChannelState::set_has_intvalue() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ChannelState::clear_has_intvalue() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ChannelState::clear_intvalue() {
+  intvalue_ = 0;
+  clear_has_intvalue();
+}
+inline ::google::protobuf::int32 ChannelState::intvalue() const {
+  // @@protoc_insertion_point(field_get:ChannelState.intValue)
+  return intvalue_;
+}
+inline void ChannelState::set_intvalue(::google::protobuf::int32 value) {
+  set_has_intvalue();
+  intvalue_ = value;
+  // @@protoc_insertion_point(field_set:ChannelState.intValue)
+}
+
+// -------------------------------------------------------------------
+
+// DeviceState
+
+// required int32 slot = 1;
+inline bool DeviceState::has_slot() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DeviceState::set_has_slot() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DeviceState::clear_has_slot() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DeviceState::clear_slot() {
+  slot_ = 0;
+  clear_has_slot();
+}
+inline ::google::protobuf::int32 DeviceState::slot() const {
+  // @@protoc_insertion_point(field_get:DeviceState.slot)
+  return slot_;
+}
+inline void DeviceState::set_slot(::google::protobuf::int32 value) {
+  set_has_slot();
+  slot_ = value;
+  // @@protoc_insertion_point(field_set:DeviceState.slot)
+}
+
+// required int32 address = 2;
+inline bool DeviceState::has_address() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DeviceState::set_has_address() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DeviceState::clear_has_address() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DeviceState::clear_address() {
+  address_ = 0;
+  clear_has_address();
+}
+inline ::google::protobuf::int32 DeviceState::address() const {
+  // @@protoc_insertion_point(field_get:DeviceState.address)
+  return address_;
+}
+inline void DeviceState::set_address(::google::protobuf::int32 value) {
+  set_has_address();
+  address_ = value;
+  // @@protoc_insertion_point(field_set:DeviceState.address)
+}
+
+// repeated .ChannelState states = 3;
+inline int DeviceState::states_size() const {
+  return states_.size();
+}
+inline void DeviceState::clear_states() {
+  states_.Clear();
+}
+inline const ::ChannelState& DeviceState::states(int index) const {
+  // @@protoc_insertion_point(field_get:DeviceState.states)
+  return states_.Get(index);
+}
+inline ::ChannelState* DeviceState::mutable_states(int index) {
+  // @@protoc_insertion_point(field_mutable:DeviceState.states)
+  return states_.Mutable(index);
+}
+inline ::ChannelState* DeviceState::add_states() {
+  // @@protoc_insertion_point(field_add:DeviceState.states)
+  return states_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ChannelState >&
+DeviceState::states() const {
+  // @@protoc_insertion_point(field_list:DeviceState.states)
+  return states_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ChannelState >*
+DeviceState::mutable_states() {
+  // @@protoc_insertion_point(field_mutable_list:DeviceState.states)
+  return &states_;
+}
+
+// -------------------------------------------------------------------
+
 // Telemetry
 
 // required int32 seq = 1;
@@ -433,15 +1144,40 @@ inline void Telemetry::set_seq(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Telemetry.seq)
 }
 
-// optional .MainWindowState state = 2;
-inline bool Telemetry::has_state() const {
+// required .RequestType type = 2;
+inline bool Telemetry::has_type() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Telemetry::set_has_state() {
+inline void Telemetry::set_has_type() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Telemetry::clear_has_state() {
+inline void Telemetry::clear_has_type() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void Telemetry::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::RequestType Telemetry::type() const {
+  // @@protoc_insertion_point(field_get:Telemetry.type)
+  return static_cast< ::RequestType >(type_);
+}
+inline void Telemetry::set_type(::RequestType value) {
+  assert(::RequestType_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:Telemetry.type)
+}
+
+// optional .MainWindowState state = 3;
+inline bool Telemetry::has_state() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Telemetry::set_has_state() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Telemetry::clear_has_state() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Telemetry::clear_state() {
   if (state_ != NULL) state_->::MainWindowState::Clear();
@@ -474,6 +1210,88 @@ inline void Telemetry::set_allocated_state(::MainWindowState* state) {
   // @@protoc_insertion_point(field_set_allocated:Telemetry.state)
 }
 
+// optional .Config config = 4;
+inline bool Telemetry::has_config() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Telemetry::set_has_config() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Telemetry::clear_has_config() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void Telemetry::clear_config() {
+  if (config_ != NULL) config_->::Config::Clear();
+  clear_has_config();
+}
+inline const ::Config& Telemetry::config() const {
+  // @@protoc_insertion_point(field_get:Telemetry.config)
+  return config_ != NULL ? *config_ : *default_instance_->config_;
+}
+inline ::Config* Telemetry::mutable_config() {
+  set_has_config();
+  if (config_ == NULL) config_ = new ::Config;
+  // @@protoc_insertion_point(field_mutable:Telemetry.config)
+  return config_;
+}
+inline ::Config* Telemetry::release_config() {
+  clear_has_config();
+  ::Config* temp = config_;
+  config_ = NULL;
+  return temp;
+}
+inline void Telemetry::set_allocated_config(::Config* config) {
+  delete config_;
+  config_ = config;
+  if (config) {
+    set_has_config();
+  } else {
+    clear_has_config();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Telemetry.config)
+}
+
+// optional .DeviceState devices = 5;
+inline bool Telemetry::has_devices() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void Telemetry::set_has_devices() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void Telemetry::clear_has_devices() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void Telemetry::clear_devices() {
+  if (devices_ != NULL) devices_->::DeviceState::Clear();
+  clear_has_devices();
+}
+inline const ::DeviceState& Telemetry::devices() const {
+  // @@protoc_insertion_point(field_get:Telemetry.devices)
+  return devices_ != NULL ? *devices_ : *default_instance_->devices_;
+}
+inline ::DeviceState* Telemetry::mutable_devices() {
+  set_has_devices();
+  if (devices_ == NULL) devices_ = new ::DeviceState;
+  // @@protoc_insertion_point(field_mutable:Telemetry.devices)
+  return devices_;
+}
+inline ::DeviceState* Telemetry::release_devices() {
+  clear_has_devices();
+  ::DeviceState* temp = devices_;
+  devices_ = NULL;
+  return temp;
+}
+inline void Telemetry::set_allocated_devices(::DeviceState* devices) {
+  delete devices_;
+  devices_ = devices;
+  if (devices) {
+    set_has_devices();
+  } else {
+    clear_has_devices();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Telemetry.devices)
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -481,6 +1299,16 @@ inline void Telemetry::set_allocated_state(::MainWindowState* state) {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::ChannelType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::ChannelType>() {
+  return ::ChannelType_descriptor();
+}
+template <> struct is_proto_enum< ::RequestType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::RequestType>() {
+  return ::RequestType_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

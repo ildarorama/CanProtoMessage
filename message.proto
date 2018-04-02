@@ -9,8 +9,48 @@ message MainWindowState {
     required double CCord = 6;
 }
 
+message Config {
+    required int32 version = 1;
+    required string config = 2;
+}
+
+enum ChannelType {
+    BOOL = 0;
+    INTEGER = 1;
+    DOUBLE = 2;
+}
+
+message ChannelState {
+    required int32 number = 1;
+    required ChannelType type = 2;
+    optional bool boolValue = 3;
+    optional double doubleValue = 4;
+    optional int32 intValue = 5;
+}
+
+message DeviceState {
+    required int32 slot = 1;
+    required int32 address = 2;
+    repeated ChannelState states = 3;
+}
+
+enum RequestType {
+    TelemtryRequest = 0;
+    ConfigRequest = 1;
+    ConfigResponse = 2;
+    TelemetryResponse = 3;
+    Ping = 4;
+    Pong = 5;
+    DeviceStateRequest = 6;
+    DeviceStateReponse = 7;
+    ChannelSetRequest = 8;
+    ChannelSetResponse = 9;
+}
 
 message Telemetry {
     required int32 seq = 1;
-    optional MainWindowState state = 2;
+    required RequestType type = 2;
+    optional MainWindowState state = 3;
+    optional Config config = 4;
+    optional DeviceState devices = 5;
 }
