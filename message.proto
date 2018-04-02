@@ -34,20 +34,21 @@ message DeviceState {
     repeated ChannelState states = 3;
 }
 
-enum RequestType {
-    TelemtryRequest = 0;
-    ConfigRequest = 1;
-    ConfigResponse = 2;
-    TelemetryResponse = 3;
-    Ping = 4;
-    Pong = 5;
-    DeviceStateRequest = 6;
-    DeviceStateReponse = 7;
-    ChannelSetRequest = 8;
-    ChannelSetResponse = 9;
-}
 
 message Telemetry {
+    enum RequestType {
+	TelemtryRequest = 0;
+        ConfigRequest = 1;
+        ConfigResponse = 2;
+        TelemetryResponse = 3;
+        Ping = 4;
+        Pong = 5;
+        DeviceStateRequest = 6;
+        DeviceStateReponse = 7;
+        ChannelSetRequest = 8;
+        ChannelSetResponse = 9;
+    }
+
     required int32 seq = 1;
     required RequestType type = 2;
     optional MainWindowState state = 3;

@@ -38,6 +38,33 @@ class ChannelState;
 class DeviceState;
 class Telemetry;
 
+enum Telemetry_RequestType {
+  Telemetry_RequestType_TelemtryRequest = 0,
+  Telemetry_RequestType_ConfigRequest = 1,
+  Telemetry_RequestType_ConfigResponse = 2,
+  Telemetry_RequestType_TelemetryResponse = 3,
+  Telemetry_RequestType_Ping = 4,
+  Telemetry_RequestType_Pong = 5,
+  Telemetry_RequestType_DeviceStateRequest = 6,
+  Telemetry_RequestType_DeviceStateReponse = 7,
+  Telemetry_RequestType_ChannelSetRequest = 8,
+  Telemetry_RequestType_ChannelSetResponse = 9
+};
+bool Telemetry_RequestType_IsValid(int value);
+const Telemetry_RequestType Telemetry_RequestType_RequestType_MIN = Telemetry_RequestType_TelemtryRequest;
+const Telemetry_RequestType Telemetry_RequestType_RequestType_MAX = Telemetry_RequestType_ChannelSetResponse;
+const int Telemetry_RequestType_RequestType_ARRAYSIZE = Telemetry_RequestType_RequestType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Telemetry_RequestType_descriptor();
+inline const ::std::string& Telemetry_RequestType_Name(Telemetry_RequestType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Telemetry_RequestType_descriptor(), value);
+}
+inline bool Telemetry_RequestType_Parse(
+    const ::std::string& name, Telemetry_RequestType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Telemetry_RequestType>(
+    Telemetry_RequestType_descriptor(), name, value);
+}
 enum ChannelType {
   BOOL = 0,
   INTEGER = 1,
@@ -57,33 +84,6 @@ inline bool ChannelType_Parse(
     const ::std::string& name, ChannelType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<ChannelType>(
     ChannelType_descriptor(), name, value);
-}
-enum RequestType {
-  TelemtryRequest = 0,
-  ConfigRequest = 1,
-  ConfigResponse = 2,
-  TelemetryResponse = 3,
-  Ping = 4,
-  Pong = 5,
-  DeviceStateRequest = 6,
-  DeviceStateReponse = 7,
-  ChannelSetRequest = 8,
-  ChannelSetResponse = 9
-};
-bool RequestType_IsValid(int value);
-const RequestType RequestType_MIN = TelemtryRequest;
-const RequestType RequestType_MAX = ChannelSetResponse;
-const int RequestType_ARRAYSIZE = RequestType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* RequestType_descriptor();
-inline const ::std::string& RequestType_Name(RequestType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    RequestType_descriptor(), value);
-}
-inline bool RequestType_Parse(
-    const ::std::string& name, RequestType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<RequestType>(
-    RequestType_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -582,6 +582,38 @@ class Telemetry : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef Telemetry_RequestType RequestType;
+  static const RequestType TelemtryRequest = Telemetry_RequestType_TelemtryRequest;
+  static const RequestType ConfigRequest = Telemetry_RequestType_ConfigRequest;
+  static const RequestType ConfigResponse = Telemetry_RequestType_ConfigResponse;
+  static const RequestType TelemetryResponse = Telemetry_RequestType_TelemetryResponse;
+  static const RequestType Ping = Telemetry_RequestType_Ping;
+  static const RequestType Pong = Telemetry_RequestType_Pong;
+  static const RequestType DeviceStateRequest = Telemetry_RequestType_DeviceStateRequest;
+  static const RequestType DeviceStateReponse = Telemetry_RequestType_DeviceStateReponse;
+  static const RequestType ChannelSetRequest = Telemetry_RequestType_ChannelSetRequest;
+  static const RequestType ChannelSetResponse = Telemetry_RequestType_ChannelSetResponse;
+  static inline bool RequestType_IsValid(int value) {
+    return Telemetry_RequestType_IsValid(value);
+  }
+  static const RequestType RequestType_MIN =
+    Telemetry_RequestType_RequestType_MIN;
+  static const RequestType RequestType_MAX =
+    Telemetry_RequestType_RequestType_MAX;
+  static const int RequestType_ARRAYSIZE =
+    Telemetry_RequestType_RequestType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  RequestType_descriptor() {
+    return Telemetry_RequestType_descriptor();
+  }
+  static inline const ::std::string& RequestType_Name(RequestType value) {
+    return Telemetry_RequestType_Name(value);
+  }
+  static inline bool RequestType_Parse(const ::std::string& name,
+      RequestType* value) {
+    return Telemetry_RequestType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   // required int32 seq = 1;
@@ -591,12 +623,12 @@ class Telemetry : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 seq() const;
   inline void set_seq(::google::protobuf::int32 value);
 
-  // required .RequestType type = 2;
+  // required .Telemetry.RequestType type = 2;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 2;
-  inline ::RequestType type() const;
-  inline void set_type(::RequestType value);
+  inline ::Telemetry_RequestType type() const;
+  inline void set_type(::Telemetry_RequestType value);
 
   // optional .MainWindowState state = 3;
   inline bool has_state() const;
@@ -1144,7 +1176,7 @@ inline void Telemetry::set_seq(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Telemetry.seq)
 }
 
-// required .RequestType type = 2;
+// required .Telemetry.RequestType type = 2;
 inline bool Telemetry::has_type() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1158,12 +1190,12 @@ inline void Telemetry::clear_type() {
   type_ = 0;
   clear_has_type();
 }
-inline ::RequestType Telemetry::type() const {
+inline ::Telemetry_RequestType Telemetry::type() const {
   // @@protoc_insertion_point(field_get:Telemetry.type)
-  return static_cast< ::RequestType >(type_);
+  return static_cast< ::Telemetry_RequestType >(type_);
 }
-inline void Telemetry::set_type(::RequestType value) {
-  assert(::RequestType_IsValid(value));
+inline void Telemetry::set_type(::Telemetry_RequestType value) {
+  assert(::Telemetry_RequestType_IsValid(value));
   set_has_type();
   type_ = value;
   // @@protoc_insertion_point(field_set:Telemetry.type)
@@ -1299,15 +1331,15 @@ inline void Telemetry::set_allocated_devices(::DeviceState* devices) {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::Telemetry_RequestType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Telemetry_RequestType>() {
+  return ::Telemetry_RequestType_descriptor();
+}
 template <> struct is_proto_enum< ::ChannelType> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::ChannelType>() {
   return ::ChannelType_descriptor();
-}
-template <> struct is_proto_enum< ::RequestType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::RequestType>() {
-  return ::RequestType_descriptor();
 }
 
 }  // namespace google

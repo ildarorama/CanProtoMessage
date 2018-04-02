@@ -33,8 +33,8 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Telemetry_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Telemetry_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* Telemetry_RequestType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ChannelType_descriptor_ = NULL;
-const ::google::protobuf::EnumDescriptor* RequestType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -136,8 +136,8 @@ void protobuf_AssignDesc_message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Telemetry));
+  Telemetry_RequestType_descriptor_ = Telemetry_descriptor_->enum_type(0);
   ChannelType_descriptor_ = file->enum_type(0);
-  RequestType_descriptor_ = file->enum_type(1);
 }
 
 namespace {
@@ -193,17 +193,17 @@ void protobuf_AddDesc_message_2eproto() {
     "\030\003 \001(\010\022\023\n\013doubleValue\030\004 \001(\001\022\020\n\010intValue\030"
     "\005 \001(\005\"K\n\013DeviceState\022\014\n\004slot\030\001 \002(\005\022\017\n\007ad"
     "dress\030\002 \002(\005\022\035\n\006states\030\003 \003(\0132\r.ChannelSta"
-    "te\"\215\001\n\tTelemetry\022\013\n\003seq\030\001 \002(\005\022\032\n\004type\030\002 "
-    "\002(\0162\014.RequestType\022\037\n\005state\030\003 \001(\0132\020.MainW"
-    "indowState\022\027\n\006config\030\004 \001(\0132\007.Config\022\035\n\007d"
-    "evices\030\005 \001(\0132\014.DeviceState*0\n\013ChannelTyp"
-    "e\022\010\n\004BOOL\020\000\022\013\n\007INTEGER\020\001\022\n\n\006DOUBLE\020\002*\323\001\n"
+    "te\"\355\002\n\tTelemetry\022\013\n\003seq\030\001 \002(\005\022$\n\004type\030\002 "
+    "\002(\0162\026.Telemetry.RequestType\022\037\n\005state\030\003 \001"
+    "(\0132\020.MainWindowState\022\027\n\006config\030\004 \001(\0132\007.C"
+    "onfig\022\035\n\007devices\030\005 \001(\0132\014.DeviceState\"\323\001\n"
     "\013RequestType\022\023\n\017TelemtryRequest\020\000\022\021\n\rCon"
     "figRequest\020\001\022\022\n\016ConfigResponse\020\002\022\025\n\021Tele"
     "metryResponse\020\003\022\010\n\004Ping\020\004\022\010\n\004Pong\020\005\022\026\n\022D"
     "eviceStateRequest\020\006\022\026\n\022DeviceStateRepons"
     "e\020\007\022\025\n\021ChannelSetRequest\020\010\022\026\n\022ChannelSet"
-    "Response\020\t", 770);
+    "Response\020\t*0\n\013ChannelType\022\010\n\004BOOL\020\000\022\013\n\007I"
+    "NTEGER\020\001\022\n\n\006DOUBLE\020\002", 780);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "message.proto", &protobuf_RegisterTypes);
   MainWindowState::default_instance_ = new MainWindowState();
@@ -234,28 +234,6 @@ bool ChannelType_IsValid(int value) {
     case 0:
     case 1:
     case 2:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const ::google::protobuf::EnumDescriptor* RequestType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return RequestType_descriptor_;
-}
-bool RequestType_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
       return true;
     default:
       return false;
@@ -1675,6 +1653,43 @@ void DeviceState::Swap(DeviceState* other) {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* Telemetry_RequestType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Telemetry_RequestType_descriptor_;
+}
+bool Telemetry_RequestType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const Telemetry_RequestType Telemetry::TelemtryRequest;
+const Telemetry_RequestType Telemetry::ConfigRequest;
+const Telemetry_RequestType Telemetry::ConfigResponse;
+const Telemetry_RequestType Telemetry::TelemetryResponse;
+const Telemetry_RequestType Telemetry::Ping;
+const Telemetry_RequestType Telemetry::Pong;
+const Telemetry_RequestType Telemetry::DeviceStateRequest;
+const Telemetry_RequestType Telemetry::DeviceStateReponse;
+const Telemetry_RequestType Telemetry::ChannelSetRequest;
+const Telemetry_RequestType Telemetry::ChannelSetResponse;
+const Telemetry_RequestType Telemetry::RequestType_MIN;
+const Telemetry_RequestType Telemetry::RequestType_MAX;
+const int Telemetry::RequestType_ARRAYSIZE;
+#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int Telemetry::kSeqFieldNumber;
 const int Telemetry::kTypeFieldNumber;
@@ -1801,7 +1816,7 @@ bool Telemetry::MergePartialFromCodedStream(
         break;
       }
 
-      // required .RequestType type = 2;
+      // required .Telemetry.RequestType type = 2;
       case 2: {
         if (tag == 16) {
          parse_type:
@@ -1809,8 +1824,8 @@ bool Telemetry::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::RequestType_IsValid(value)) {
-            set_type(static_cast< ::RequestType >(value));
+          if (::Telemetry_RequestType_IsValid(value)) {
+            set_type(static_cast< ::Telemetry_RequestType >(value));
           } else {
             mutable_unknown_fields()->AddVarint(2, value);
           }
@@ -1890,7 +1905,7 @@ void Telemetry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->seq(), output);
   }
 
-  // required .RequestType type = 2;
+  // required .Telemetry.RequestType type = 2;
   if (has_type()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->type(), output);
@@ -1929,7 +1944,7 @@ void Telemetry::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->seq(), target);
   }
 
-  // required .RequestType type = 2;
+  // required .Telemetry.RequestType type = 2;
   if (has_type()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->type(), target);
@@ -1975,7 +1990,7 @@ int Telemetry::ByteSize() const {
           this->seq());
     }
 
-    // required .RequestType type = 2;
+    // required .Telemetry.RequestType type = 2;
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
