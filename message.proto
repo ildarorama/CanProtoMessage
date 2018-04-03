@@ -57,7 +57,8 @@ enum RequestType {
     ChannelSetResponse = 9;
     PushButtonRequest = 10;
     CodeListRequest = 11;
-    CodeLoadRequest = 12;
+    CodeListResponse = 12;
+    CodeLoadRequest = 13;
 }
 
 message Telemetry {

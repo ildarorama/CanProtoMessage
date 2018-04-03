@@ -73,7 +73,8 @@ enum RequestType {
   ChannelSetResponse = 9,
   PushButtonRequest = 10,
   CodeListRequest = 11,
-  CodeLoadRequest = 12
+  CodeListResponse = 12,
+  CodeLoadRequest = 13
 };
 bool RequestType_IsValid(int value);
 const RequestType RequestType_MIN = TelemtryRequest;

@@ -249,14 +249,14 @@ void protobuf_AddDesc_message_2eproto() {
     "vices\030\005 \001(\0132\014.DeviceState\022\037\n\npushButton\030"
     "\006 \001(\0132\013.PushButton\022\027\n\010codeList\030\007 \003(\0132\005.C"
     "ode*0\n\013ChannelType\022\010\n\004BOOL\020\000\022\013\n\007INTEGER\020"
-    "\001\022\n\n\006DOUBLE\020\002*\224\002\n\013RequestType\022\023\n\017Telemtr"
+    "\001\022\n\n\006DOUBLE\020\002*\252\002\n\013RequestType\022\023\n\017Telemtr"
     "yRequest\020\000\022\021\n\rConfigRequest\020\001\022\022\n\016ConfigR"
     "esponse\020\002\022\025\n\021TelemetryResponse\020\003\022\010\n\004Ping"
     "\020\004\022\010\n\004Pong\020\005\022\026\n\022DeviceStateRequest\020\006\022\026\n\022"
     "DeviceStateReponse\020\007\022\025\n\021ChannelSetReques"
     "t\020\010\022\026\n\022ChannelSetResponse\020\t\022\025\n\021PushButto"
-    "nRequest\020\n\022\023\n\017CodeListRequest\020\013\022\023\n\017CodeL"
-    "oadRequest\020\014", 972);
+    "nRequest\020\n\022\023\n\017CodeListRequest\020\013\022\024\n\020CodeL"
+    "istResponse\020\014\022\023\n\017CodeLoadRequest\020\r", 994);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "message.proto", &protobuf_RegisterTypes);
   MainWindowState::default_instance_ = new MainWindowState();
@@ -316,6 +316,7 @@ bool RequestType_IsValid(int value) {
     case 10:
     case 11:
     case 12:
+    case 13:
       return true;
     default:
       return false;
