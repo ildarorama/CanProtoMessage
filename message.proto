@@ -20,6 +20,12 @@ enum ChannelType {
     DOUBLE = 2;
 }
 
+message ErrorResponse {
+    required int32 code = 1;
+    required string date = 2;
+    required string message = 3;
+}
+
 message ChannelState {
     required int32 number = 1;
     required ChannelType type = 2;
@@ -59,14 +65,18 @@ enum RequestType {
     CodeListRequest = 11;
     CodeListResponse = 12;
     CodeLoadRequest = 13;
+    CodeLoadResponse = 14;
+
 }
 
 message Telemetry {
-    required int32 seq = 1;
+    required int32 seq = 1;    
     required RequestType type = 2;
-    optional MainWindowState state = 3;
-    optional Config config = 4;
-    optional DeviceState devices = 5;
-    optional PushButton pushButton = 6;
-    repeated Code codeList = 7;
+    optional ErrorResponse error = 3;
+    optional MainWindowState state = 4;
+    optional Config config = 5;
+    optional DeviceState devices = 6;
+    optional PushButton pushButton = 7;
+    optional int32 loadCodeIndex = 8;
+    repeated Code codeList = 9;
 }

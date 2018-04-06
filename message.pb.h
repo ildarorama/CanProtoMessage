@@ -34,6 +34,7 @@ void protobuf_ShutdownFile_message_2eproto();
 
 class MainWindowState;
 class Config;
+class ErrorResponse;
 class ChannelState;
 class DeviceState;
 class Code;
@@ -74,11 +75,12 @@ enum RequestType {
   PushButtonRequest = 10,
   CodeListRequest = 11,
   CodeListResponse = 12,
-  CodeLoadRequest = 13
+  CodeLoadRequest = 13,
+  CodeLoadResponse = 14
 };
 bool RequestType_IsValid(int value);
 const RequestType RequestType_MIN = TelemtryRequest;
-const RequestType RequestType_MAX = CodeLoadRequest;
+const RequestType RequestType_MAX = CodeLoadResponse;
 const int RequestType_ARRAYSIZE = RequestType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* RequestType_descriptor();
@@ -313,6 +315,115 @@ class Config : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static Config* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ErrorResponse : public ::google::protobuf::Message {
+ public:
+  ErrorResponse();
+  virtual ~ErrorResponse();
+
+  ErrorResponse(const ErrorResponse& from);
+
+  inline ErrorResponse& operator=(const ErrorResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ErrorResponse& default_instance();
+
+  void Swap(ErrorResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  ErrorResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ErrorResponse& from);
+  void MergeFrom(const ErrorResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 code = 1;
+  inline bool has_code() const;
+  inline void clear_code();
+  static const int kCodeFieldNumber = 1;
+  inline ::google::protobuf::int32 code() const;
+  inline void set_code(::google::protobuf::int32 value);
+
+  // required string date = 2;
+  inline bool has_date() const;
+  inline void clear_date();
+  static const int kDateFieldNumber = 2;
+  inline const ::std::string& date() const;
+  inline void set_date(const ::std::string& value);
+  inline void set_date(const char* value);
+  inline void set_date(const char* value, size_t size);
+  inline ::std::string* mutable_date();
+  inline ::std::string* release_date();
+  inline void set_allocated_date(::std::string* date);
+
+  // required string message = 3;
+  inline bool has_message() const;
+  inline void clear_message();
+  static const int kMessageFieldNumber = 3;
+  inline const ::std::string& message() const;
+  inline void set_message(const ::std::string& value);
+  inline void set_message(const char* value);
+  inline void set_message(const char* value, size_t size);
+  inline ::std::string* mutable_message();
+  inline ::std::string* release_message();
+  inline void set_allocated_message(::std::string* message);
+
+  // @@protoc_insertion_point(class_scope:ErrorResponse)
+ private:
+  inline void set_has_code();
+  inline void clear_has_code();
+  inline void set_has_date();
+  inline void clear_has_date();
+  inline void set_has_message();
+  inline void clear_has_message();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* date_;
+  ::std::string* message_;
+  ::google::protobuf::int32 code_;
+  friend void  protobuf_AddDesc_message_2eproto();
+  friend void protobuf_AssignDesc_message_2eproto();
+  friend void protobuf_ShutdownFile_message_2eproto();
+
+  void InitAsDefaultInstance();
+  static ErrorResponse* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -797,46 +908,62 @@ class Telemetry : public ::google::protobuf::Message {
   inline ::RequestType type() const;
   inline void set_type(::RequestType value);
 
-  // optional .MainWindowState state = 3;
+  // optional .ErrorResponse error = 3;
+  inline bool has_error() const;
+  inline void clear_error();
+  static const int kErrorFieldNumber = 3;
+  inline const ::ErrorResponse& error() const;
+  inline ::ErrorResponse* mutable_error();
+  inline ::ErrorResponse* release_error();
+  inline void set_allocated_error(::ErrorResponse* error);
+
+  // optional .MainWindowState state = 4;
   inline bool has_state() const;
   inline void clear_state();
-  static const int kStateFieldNumber = 3;
+  static const int kStateFieldNumber = 4;
   inline const ::MainWindowState& state() const;
   inline ::MainWindowState* mutable_state();
   inline ::MainWindowState* release_state();
   inline void set_allocated_state(::MainWindowState* state);
 
-  // optional .Config config = 4;
+  // optional .Config config = 5;
   inline bool has_config() const;
   inline void clear_config();
-  static const int kConfigFieldNumber = 4;
+  static const int kConfigFieldNumber = 5;
   inline const ::Config& config() const;
   inline ::Config* mutable_config();
   inline ::Config* release_config();
   inline void set_allocated_config(::Config* config);
 
-  // optional .DeviceState devices = 5;
+  // optional .DeviceState devices = 6;
   inline bool has_devices() const;
   inline void clear_devices();
-  static const int kDevicesFieldNumber = 5;
+  static const int kDevicesFieldNumber = 6;
   inline const ::DeviceState& devices() const;
   inline ::DeviceState* mutable_devices();
   inline ::DeviceState* release_devices();
   inline void set_allocated_devices(::DeviceState* devices);
 
-  // optional .PushButton pushButton = 6;
+  // optional .PushButton pushButton = 7;
   inline bool has_pushbutton() const;
   inline void clear_pushbutton();
-  static const int kPushButtonFieldNumber = 6;
+  static const int kPushButtonFieldNumber = 7;
   inline const ::PushButton& pushbutton() const;
   inline ::PushButton* mutable_pushbutton();
   inline ::PushButton* release_pushbutton();
   inline void set_allocated_pushbutton(::PushButton* pushbutton);
 
-  // repeated .Code codeList = 7;
+  // optional int32 loadCodeIndex = 8;
+  inline bool has_loadcodeindex() const;
+  inline void clear_loadcodeindex();
+  static const int kLoadCodeIndexFieldNumber = 8;
+  inline ::google::protobuf::int32 loadcodeindex() const;
+  inline void set_loadcodeindex(::google::protobuf::int32 value);
+
+  // repeated .Code codeList = 9;
   inline int codelist_size() const;
   inline void clear_codelist();
-  static const int kCodeListFieldNumber = 7;
+  static const int kCodeListFieldNumber = 9;
   inline const ::Code& codelist(int index) const;
   inline ::Code* mutable_codelist(int index);
   inline ::Code* add_codelist();
@@ -851,6 +978,8 @@ class Telemetry : public ::google::protobuf::Message {
   inline void clear_has_seq();
   inline void set_has_type();
   inline void clear_has_type();
+  inline void set_has_error();
+  inline void clear_has_error();
   inline void set_has_state();
   inline void clear_has_state();
   inline void set_has_config();
@@ -859,6 +988,8 @@ class Telemetry : public ::google::protobuf::Message {
   inline void clear_has_devices();
   inline void set_has_pushbutton();
   inline void clear_has_pushbutton();
+  inline void set_has_loadcodeindex();
+  inline void clear_has_loadcodeindex();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -866,11 +997,13 @@ class Telemetry : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::google::protobuf::int32 seq_;
   int type_;
+  ::ErrorResponse* error_;
   ::MainWindowState* state_;
   ::Config* config_;
   ::DeviceState* devices_;
   ::PushButton* pushbutton_;
   ::google::protobuf::RepeatedPtrField< ::Code > codelist_;
+  ::google::protobuf::int32 loadcodeindex_;
   friend void  protobuf_AddDesc_message_2eproto();
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
@@ -1131,6 +1264,186 @@ inline void Config::set_allocated_config(::std::string* config) {
     config_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:Config.config)
+}
+
+// -------------------------------------------------------------------
+
+// ErrorResponse
+
+// required int32 code = 1;
+inline bool ErrorResponse::has_code() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ErrorResponse::set_has_code() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ErrorResponse::clear_has_code() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ErrorResponse::clear_code() {
+  code_ = 0;
+  clear_has_code();
+}
+inline ::google::protobuf::int32 ErrorResponse::code() const {
+  // @@protoc_insertion_point(field_get:ErrorResponse.code)
+  return code_;
+}
+inline void ErrorResponse::set_code(::google::protobuf::int32 value) {
+  set_has_code();
+  code_ = value;
+  // @@protoc_insertion_point(field_set:ErrorResponse.code)
+}
+
+// required string date = 2;
+inline bool ErrorResponse::has_date() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ErrorResponse::set_has_date() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ErrorResponse::clear_has_date() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ErrorResponse::clear_date() {
+  if (date_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    date_->clear();
+  }
+  clear_has_date();
+}
+inline const ::std::string& ErrorResponse::date() const {
+  // @@protoc_insertion_point(field_get:ErrorResponse.date)
+  return *date_;
+}
+inline void ErrorResponse::set_date(const ::std::string& value) {
+  set_has_date();
+  if (date_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    date_ = new ::std::string;
+  }
+  date_->assign(value);
+  // @@protoc_insertion_point(field_set:ErrorResponse.date)
+}
+inline void ErrorResponse::set_date(const char* value) {
+  set_has_date();
+  if (date_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    date_ = new ::std::string;
+  }
+  date_->assign(value);
+  // @@protoc_insertion_point(field_set_char:ErrorResponse.date)
+}
+inline void ErrorResponse::set_date(const char* value, size_t size) {
+  set_has_date();
+  if (date_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    date_ = new ::std::string;
+  }
+  date_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:ErrorResponse.date)
+}
+inline ::std::string* ErrorResponse::mutable_date() {
+  set_has_date();
+  if (date_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    date_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:ErrorResponse.date)
+  return date_;
+}
+inline ::std::string* ErrorResponse::release_date() {
+  clear_has_date();
+  if (date_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = date_;
+    date_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ErrorResponse::set_allocated_date(::std::string* date) {
+  if (date_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete date_;
+  }
+  if (date) {
+    set_has_date();
+    date_ = date;
+  } else {
+    clear_has_date();
+    date_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:ErrorResponse.date)
+}
+
+// required string message = 3;
+inline bool ErrorResponse::has_message() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ErrorResponse::set_has_message() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ErrorResponse::clear_has_message() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ErrorResponse::clear_message() {
+  if (message_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_->clear();
+  }
+  clear_has_message();
+}
+inline const ::std::string& ErrorResponse::message() const {
+  // @@protoc_insertion_point(field_get:ErrorResponse.message)
+  return *message_;
+}
+inline void ErrorResponse::set_message(const ::std::string& value) {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  message_->assign(value);
+  // @@protoc_insertion_point(field_set:ErrorResponse.message)
+}
+inline void ErrorResponse::set_message(const char* value) {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  message_->assign(value);
+  // @@protoc_insertion_point(field_set_char:ErrorResponse.message)
+}
+inline void ErrorResponse::set_message(const char* value, size_t size) {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  message_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:ErrorResponse.message)
+}
+inline ::std::string* ErrorResponse::mutable_message() {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:ErrorResponse.message)
+  return message_;
+}
+inline ::std::string* ErrorResponse::release_message() {
+  clear_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = message_;
+    message_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ErrorResponse::set_allocated_message(::std::string* message) {
+  if (message_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete message_;
+  }
+  if (message) {
+    set_has_message();
+    message_ = message;
+  } else {
+    clear_has_message();
+    message_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:ErrorResponse.message)
 }
 
 // -------------------------------------------------------------------
@@ -1653,15 +1966,56 @@ inline void Telemetry::set_type(::RequestType value) {
   // @@protoc_insertion_point(field_set:Telemetry.type)
 }
 
-// optional .MainWindowState state = 3;
-inline bool Telemetry::has_state() const {
+// optional .ErrorResponse error = 3;
+inline bool Telemetry::has_error() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Telemetry::set_has_state() {
+inline void Telemetry::set_has_error() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Telemetry::clear_has_state() {
+inline void Telemetry::clear_has_error() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void Telemetry::clear_error() {
+  if (error_ != NULL) error_->::ErrorResponse::Clear();
+  clear_has_error();
+}
+inline const ::ErrorResponse& Telemetry::error() const {
+  // @@protoc_insertion_point(field_get:Telemetry.error)
+  return error_ != NULL ? *error_ : *default_instance_->error_;
+}
+inline ::ErrorResponse* Telemetry::mutable_error() {
+  set_has_error();
+  if (error_ == NULL) error_ = new ::ErrorResponse;
+  // @@protoc_insertion_point(field_mutable:Telemetry.error)
+  return error_;
+}
+inline ::ErrorResponse* Telemetry::release_error() {
+  clear_has_error();
+  ::ErrorResponse* temp = error_;
+  error_ = NULL;
+  return temp;
+}
+inline void Telemetry::set_allocated_error(::ErrorResponse* error) {
+  delete error_;
+  error_ = error;
+  if (error) {
+    set_has_error();
+  } else {
+    clear_has_error();
+  }
+  // @@protoc_insertion_point(field_set_allocated:Telemetry.error)
+}
+
+// optional .MainWindowState state = 4;
+inline bool Telemetry::has_state() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void Telemetry::set_has_state() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void Telemetry::clear_has_state() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Telemetry::clear_state() {
   if (state_ != NULL) state_->::MainWindowState::Clear();
@@ -1694,15 +2048,15 @@ inline void Telemetry::set_allocated_state(::MainWindowState* state) {
   // @@protoc_insertion_point(field_set_allocated:Telemetry.state)
 }
 
-// optional .Config config = 4;
+// optional .Config config = 5;
 inline bool Telemetry::has_config() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void Telemetry::set_has_config() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void Telemetry::clear_has_config() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void Telemetry::clear_config() {
   if (config_ != NULL) config_->::Config::Clear();
@@ -1735,15 +2089,15 @@ inline void Telemetry::set_allocated_config(::Config* config) {
   // @@protoc_insertion_point(field_set_allocated:Telemetry.config)
 }
 
-// optional .DeviceState devices = 5;
+// optional .DeviceState devices = 6;
 inline bool Telemetry::has_devices() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void Telemetry::set_has_devices() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void Telemetry::clear_has_devices() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void Telemetry::clear_devices() {
   if (devices_ != NULL) devices_->::DeviceState::Clear();
@@ -1776,15 +2130,15 @@ inline void Telemetry::set_allocated_devices(::DeviceState* devices) {
   // @@protoc_insertion_point(field_set_allocated:Telemetry.devices)
 }
 
-// optional .PushButton pushButton = 6;
+// optional .PushButton pushButton = 7;
 inline bool Telemetry::has_pushbutton() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void Telemetry::set_has_pushbutton() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void Telemetry::clear_has_pushbutton() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void Telemetry::clear_pushbutton() {
   if (pushbutton_ != NULL) pushbutton_->::PushButton::Clear();
@@ -1817,7 +2171,31 @@ inline void Telemetry::set_allocated_pushbutton(::PushButton* pushbutton) {
   // @@protoc_insertion_point(field_set_allocated:Telemetry.pushButton)
 }
 
-// repeated .Code codeList = 7;
+// optional int32 loadCodeIndex = 8;
+inline bool Telemetry::has_loadcodeindex() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void Telemetry::set_has_loadcodeindex() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void Telemetry::clear_has_loadcodeindex() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void Telemetry::clear_loadcodeindex() {
+  loadcodeindex_ = 0;
+  clear_has_loadcodeindex();
+}
+inline ::google::protobuf::int32 Telemetry::loadcodeindex() const {
+  // @@protoc_insertion_point(field_get:Telemetry.loadCodeIndex)
+  return loadcodeindex_;
+}
+inline void Telemetry::set_loadcodeindex(::google::protobuf::int32 value) {
+  set_has_loadcodeindex();
+  loadcodeindex_ = value;
+  // @@protoc_insertion_point(field_set:Telemetry.loadCodeIndex)
+}
+
+// repeated .Code codeList = 9;
 inline int Telemetry::codelist_size() const {
   return codelist_.size();
 }
